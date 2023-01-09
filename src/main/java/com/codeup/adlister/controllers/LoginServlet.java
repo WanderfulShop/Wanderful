@@ -14,11 +14,16 @@ import java.io.IOException;
 @WebServlet(name = "controllers.LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getSession().getAttribute("user") != null) {
-            response.sendRedirect("/profile");
-            return;
-        }
-        request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+        String name = request.getParameter("username");
+            if(name.equals("codeup")){
+                request.setAttribute("name", name);
+                request.getRequestDispatcher("/profile.jsp");
+            }
+//        if (request.getSession().getAttribute("user") != null && request.getSession().getAttribute("password") != null) {
+//            response.sendRedirect("/profile");
+//            return;
+//        }
+//        request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -26,10 +31,11 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         User user = DaoFactory.getUsersDao().findByUsername(username);
 
-        if (user == null) {
+        if (user == null | password == null ) {
             response.sendRedirect("/login");
             return;
         }
+
 
         boolean validAttempt = Password.check(password, user.getPassword());
 
