@@ -10,6 +10,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.codeup.adlister.controllers.Config;
+
 public class MySQLAdsDao implements Ads {
     private Connection connection = null;
 
