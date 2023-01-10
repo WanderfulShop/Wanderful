@@ -35,6 +35,12 @@ CREATE TABLE wand_ads (
     FOREIGN KEY (wand_id) REFERENCES wands(id),
     FOREIGN KEY (ad_id) REFERENCES ads(id)
 );
+DESCRIBE users;
+ALTER TABLE users
+ADD user_password VARCHAR(100) FIRST;
+DESCRIBE users;
+ALTER TABLE users MODIFY user_password VARCHAR(100 )NOT NULL FIRST;
+DESCRIBE users;
 
 
 
