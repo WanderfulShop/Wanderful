@@ -1,22 +1,42 @@
-USE adlister_db;
-
-DROP TABLE IF EXISTS ads;
-DROP TABLE IF EXISTS users;
-
+CREATE DATABASE IF NOT EXISTS wanderful_db;
+SHOW DATABASES;
+USE wanderful_db;
 CREATE TABLE users (
-    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    username VARCHAR(240) NOT NULL,
-    email VARCHAR(240) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    PRIMARY KEY (id)
+                       id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+                       user_name VARCHAR(100) NOT NULL UNIQUE,
+                       first_name VARCHAR(100) NOT NULL,
+                       last_name VARCHAR(100) NOT NULL,
+                       school VARCHAR(100),
+                       email VARCHAR(100) NOT NULL,
+                       PRIMARY KEY (id)
 );
-
-CREATE TABLE ads (
+CREATE TABLE wands (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    user_id INT UNSIGNED NOT NULL,
-    title VARCHAR(240) NOT NULL,
-    description TEXT NOT NULL,
+    wand_name VARCHAR(50) NOT NULL,
+    core_material VARCHAR(80) NOT NULL,
+    wood_type VARCHAR(80) NOT NULL,
+    use_category VARCHAR(80) NOT NULL,
+    age INT NOT NULL,
+    image VARCHAR(100),
+    user_id int UNSIGNED NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id)
-        ON DELETE CASCADE
 );
+CREATE TABLE ads (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    creation_date DATE NOT NULL,
+    ad_title VARCHAR(80) NOT NULL,
+    ad_description VARCHAR(200) NOT NULL,
+    PRIMARY KEY(id)
+);
+CREATE TABLE wand_ads (
+    wand_id INT UNSIGNED NOT NULL,
+    ad_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (wand_id) REFERENCES wands(id),
+    FOREIGN KEY (ad_id) REFERENCES ads(id)
+);
+
+
+
+
+

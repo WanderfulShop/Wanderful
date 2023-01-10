@@ -15,11 +15,16 @@ import java.io.IOException;
 @WebServlet(name = "controllers.LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getSession().getAttribute("user") != null) {
-            response.sendRedirect("/profile");
-            return;
-        }
-        request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+        String name = request.getParameter("username");
+            if(name.equals("codeup")){
+                request.setAttribute("name", name);
+                request.getRequestDispatcher("/profile.jsp");
+            }
+//        if (request.getSession().getAttribute("user") != null && request.getSession().getAttribute("password") != null) {
+//            response.sendRedirect("/profile");
+//            return;
+//        }
+//        request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -28,6 +33,7 @@ public class LoginServlet extends HttpServlet {
         userAttempt.setPassword(request.getParameter("password"));
         
         User userFromDB = DaoFactory.getUsersDao().findByUsername(userAttempt.getUsername());
+
 
         if (userFromDB == null) {
             /* error msg here: No username entered*/
@@ -39,6 +45,7 @@ public class LoginServlet extends HttpServlet {
 
         // gotta salt the userAttempt password
         boolean validAttempt = Password.check(userAttempt.getPassword(), userFromDB.getPassword());
+
 
         if (validAttempt) {
             request.getSession().setAttribute("user", userFromDB);
