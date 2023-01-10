@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"%>
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
@@ -9,8 +9,7 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
         <h1>Please Log In</h1>
-        <div>${error} | \testing this div</div>
-        <div>${test}</div>
+        <div>Error: ${error}</div>
         <form action="/login" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>

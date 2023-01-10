@@ -1,10 +1,10 @@
 package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
-import com.codeup.adlister.models.LoginRequest;
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,24 +23,28 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        LoginRequest lR = new LoginRequest(request.getParameter("username"), request.getParameter("password"));
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        User user = DaoFactory.getUsersDao().findByUsername(username);
+        User userAttempt = new User();
+        userAttempt.setUsername(request.getParameter("username"));
+        userAttempt.setPassword(request.getParameter("password"));
+        
+        User userFromDB = DaoFactory.getUsersDao().findByUsername(userAttempt.getUsername());
 
-        if (user == null) {
-            response.sendRedirect("/login");
+        if (userFromDB == null) {
+            /* error msg here: No username entered*/
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/login.jsp");
+            request.setAttribute("error", "Invalid Username!");
+            requestDispatcher.forward(request, response);
             return;
         }
 
-        boolean validAttempt = Password.check(password, user.getPassword());
+        // gotta salt the userAttempt password
+        boolean validAttempt = Password.check(userAttempt.getPassword(), userFromDB.getPassword());
 
         if (validAttempt) {
-            request.getSession().setAttribute("user", user);
+            request.getSession().setAttribute("user", userFromDB);
             response.sendRedirect("/profile");
         } else {
-            request.getSession().setAttribute("error", "Invalid username and password combination.");
-            request.getSession().setAttribute("test", "Sayin' the test was successful!");
-            request.getRequestDispatcher("/WEB-INF/ads/login.jsp").forward(request, response);        }
+            request.getSession().setAttribute("error", "Invalid password");
+            request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);        }
     }
 }
