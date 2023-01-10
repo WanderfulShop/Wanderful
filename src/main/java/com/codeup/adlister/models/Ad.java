@@ -1,6 +1,9 @@
 package com.codeup.adlister.models;
 
-public class Ad {
+import java.io.Serializable;
+
+// This is a BEAN!
+public class Ad implements Serializable {
     private long id;
     private long userId;
     private String title;

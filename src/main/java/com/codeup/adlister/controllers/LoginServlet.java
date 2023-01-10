@@ -4,6 +4,7 @@ import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,24 +27,31 @@ public class LoginServlet extends HttpServlet {
 //        request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        User user = DaoFactory.getUsersDao().findByUsername(username);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        User userAttempt = new User();
+        userAttempt.setUsername(request.getParameter("username"));
+        userAttempt.setPassword(request.getParameter("password"));
+        
+        User userFromDB = DaoFactory.getUsersDao().findByUsername(userAttempt.getUsername());
 
-        if (user == null | password == null ) {
-            response.sendRedirect("/login");
+
+        if (userFromDB == null) {
+            /* error msg here: No username entered*/
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/login.jsp");
+            request.setAttribute("error", "Invalid Username!");
+            requestDispatcher.forward(request, response);
             return;
         }
 
+        // gotta salt the userAttempt password
+        boolean validAttempt = Password.check(userAttempt.getPassword(), userFromDB.getPassword());
 
-        boolean validAttempt = Password.check(password, user.getPassword());
 
         if (validAttempt) {
-            request.getSession().setAttribute("user", user);
+            request.getSession().setAttribute("user", userFromDB);
             response.sendRedirect("/profile");
         } else {
-            response.sendRedirect("/login");
-        }
+            request.getSession().setAttribute("error", "Invalid password");
+            request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);        }
     }
 }
