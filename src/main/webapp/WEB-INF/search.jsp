@@ -15,7 +15,7 @@
     String database = "wanderful_db";
     String userid = "root";
     String password = "codeup";
-    String username=request.getParameter("username");
+    String username=request.getParameter("user_name");
     try {
         Class.forName(driver);
     } catch (ClassNotFoundException e) {
@@ -28,7 +28,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
+
+<head>
+    <jsp:include page="/WEB-INF/partials/head.jsp">
+        <jsp:param name="title" value="Please Log In" />
+    </jsp:include>
+</head>
+
 <body>
-<h1><%=resultSet.getString("username")%></h1>
+    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+    <h1><%=resultSet.getString("username")%></h1>
 </body>
 </html>
