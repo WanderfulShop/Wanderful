@@ -6,7 +6,7 @@ import com.mysql.cj.jdbc.Driver;
 import java.sql.*;
 
 public class MySQLUsersDao implements Users {
-    private Connection connection;
+    private final Connection connection;
 
     public MySQLUsersDao(Config config) {
         try {
@@ -30,7 +30,7 @@ public class MySQLUsersDao implements Users {
             stmt.setString(1, userName);
             return extractUser(stmt.executeQuery());
         } catch (SQLException e) {
-            throw new RuntimeException("Error finding a user by username", e);
+            throw new RuntimeException("Error finding a user by username: " + userName, e);
         }
     }
 
@@ -63,7 +63,8 @@ public class MySQLUsersDao implements Users {
             rs.getString("first_name"),
             rs.getString("last_name"),
             rs.getString("school"),
-            rs.getString("email")
+            rs.getString("email"),
+            rs.getString("user_password")
         );
     }
 

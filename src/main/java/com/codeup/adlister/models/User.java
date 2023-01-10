@@ -16,25 +16,26 @@ public class User implements Serializable {
 
     public User() {}
 
-    public User(int id, String userName, String firstName, String lastName, String school, String email) {
+    public User(int id, String userName, String firstName, String lastName, String school, String email, String password) {
         this.id = id;
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        // setPassword(password); use again after pw is implemented in db
+        setPassword(password);
     }
 
-    public User(String userName, String firstName, String lastName, String school, String email) {
+    public User(String userName, String firstName, String lastName, String school, String email, String password) {
 
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
         this.school = school;
         this.email = email;
-        // setPassword(password); use again after pw is implemented in db
+        setPassword(password);
     }
-/* Will use again after password is implemented in the db
+
+    // getters and setters...
 
     public String getPassword() {
         return password;
@@ -43,9 +44,6 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = Password.hash(password);
     }
-*/
-
-    // getters and setters...
 
     public int getId() {
         return id;
@@ -95,11 +93,5 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

@@ -36,8 +36,8 @@ public class LoginServlet extends HttpServlet {
         }
 
         // validate password matches db
-        // boolean validAttempt = Password.check(rawInputPw, userFromDB.getPassword());
-        boolean validAttempt = true; // for debugging
+        boolean validAttempt = Password.check(rawInputPw, userFromDB.getPassword());
+
 
         if (validAttempt) {
             request.getSession().setAttribute("user", userFromDB);
