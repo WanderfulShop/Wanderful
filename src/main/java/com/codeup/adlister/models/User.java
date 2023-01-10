@@ -25,6 +25,15 @@ public class User implements Serializable {
         // setPassword(password); use again after pw is implemented in db
     }
 
+    public User(String userName, String firstName, String lastName, String school, String email) {
+
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.school = school;
+        this.email = email;
+        // setPassword(password); use again after pw is implemented in db
+    }
 /* Will use again after password is implemented in the db
 
     public String getPassword() {
