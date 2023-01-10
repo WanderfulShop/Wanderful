@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"%>
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
@@ -8,7 +8,11 @@
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
-        <h1>Please Log In</h1>
+
+        <h1>Welcome Witches and Wizards !</h1>
+        <h1>Welcome to Wanderful! Where we have rare wands for everyday wizards.</h1>
+        <div>${error}</div>
+        
         <form action="/login" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>

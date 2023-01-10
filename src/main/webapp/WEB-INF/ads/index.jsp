@@ -12,10 +12,17 @@
 <div class="container">
     <h1>Here Are all the ads!</h1>
 
-    <c:forEach var="ad" items="${ads}">
+    <c:forEach var="ad" items="${ads}" varStatus="loop">
         <div class="col-md-6">
             <h2>${ad.title}</h2>
             <p>${ad.description}</p>
+            <form action="ads" method="post">
+                <input type="hidden" name="adId" value="${loop.index}">
+                <input type="submit"/>
+            </form>
+<%--
+             post request here. Send ad index to AdsIndexServlet via POST
+--%>
         </div>
     </c:forEach>
 </div>
