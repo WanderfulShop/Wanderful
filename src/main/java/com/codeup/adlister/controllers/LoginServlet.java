@@ -22,6 +22,7 @@ public class LoginServlet extends HttpServlet {
         User userAttempt = new User();
         userAttempt.setUserName(request.getParameter("username"));
         userAttempt.setPassword(request.getParameter("password"));
+        String rawInputPw = request.getParameter("password");
         
         User userFromDB = DaoFactory.getUsersDao().findByUsername(userAttempt.getUserName());
 
@@ -34,9 +35,9 @@ public class LoginServlet extends HttpServlet {
             return;
         }
 
-        // gotta salt the userAttempt password
-        boolean validAttempt = Password.check(userAttempt.getPassword(), userFromDB.getPassword());
-
+        // validate password matches db
+        // boolean validAttempt = Password.check(rawInputPw, userFromDB.getPassword());
+        boolean validAttempt = true; // for debugging
 
         if (validAttempt) {
             request.getSession().setAttribute("user", userFromDB);
