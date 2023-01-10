@@ -8,7 +8,8 @@
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
-        <h1>Please Log In</h1>
+        <h1>Welcome Witches and Wizards !</h1>
+        <h1>Welcome to Wanderful! Where we have rare wands for everyday wizards.</h1>
         <form action="/login" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>

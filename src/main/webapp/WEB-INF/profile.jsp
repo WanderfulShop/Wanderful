@@ -6,11 +6,13 @@
     </jsp:include>
 </head>
 <body>
-    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<%--    <jsp:include page=> Lucas navbar goes here--%>
 
     <div class="container">
         <h1>Welcome, ${sessionScope.user.username}!</h1>
     </div>
+<h1>Ad 1</h1>
+<h1>Ad 2</h1>
 
 </body>
 </html>
