@@ -1,27 +1,29 @@
 package com.codeup.adlister.models;
 
 import java.io.Serializable;
+import java.util.Date;
 
 // This is a BEAN!
 public class Ad implements Serializable {
     private long id;
-    private long userId;
-    private String title;
-    private String description;
+    private Date creationDate;
+    private String adTitle;
+    private String adDescription;
 
-    public Ad(long id, long userId, String title, String description) {
+    public Ad(long id, Date creationDate, String adTitle, String adDescription) {
         this.id = id;
-        this.userId = userId;
-        this.title = title;
-        this.description = description;
+        this.creationDate = creationDate;
+        this.adTitle = adTitle;
+        this.adDescription = adDescription;
     }
 
-    public Ad(long userId, String title, String description) {
-        this.userId = userId;
-        this.title = title;
-        this.description = description;
+    public Ad(long id, String adTitle, String adDescription) {
+        this.id = id;
+        this.adTitle = adTitle;
+        this.adDescription = adDescription;
     }
 
+    // getters and setters...
     public long getId() {
         return id;
     }
@@ -30,27 +32,27 @@ public class Ad implements Serializable {
         this.id = id;
     }
 
-    public long getUserId() {
-        return userId;
+    public Date getCreationDate() {
+        return creationDate;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 
-    public String getTitle() {
-        return title;
+    public String getAdTitle() {
+        return adTitle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setAdTitle(String adTitle) {
+        this.adTitle = adTitle;
     }
 
-    public String getDescription() {
-        return description;
+    public String getAdDescription() {
+        return adDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setAdDescription(String adDescription) {
+        this.adDescription = adDescription;
     }
 }

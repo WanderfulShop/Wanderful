@@ -6,40 +6,76 @@ import java.io.Serializable;
 
 // This is a BEAN!
 public class User implements Serializable {
-    private long id;
-    private String username;
+    private int id;
+    private String userName;
+    private String firstName;
+    private String lastName;
+    private String school;
     private String email;
     private String password;
 
     public User() {}
 
-    public User(String username, String email, String password) {
-        this.username = username;
-        this.email = email;
-        setPassword(password);
-    }
-
-    public User(long id, String username, String email, String password) {
+    public User(int id, String userName, String firstName, String lastName, String school, String email) {
         this.id = id;
-        this.username = username;
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
-        this.password = password;
+        // setPassword(password); use again after pw is implemented in db
     }
 
-    public long getId() {
+/* Will use again after password is implemented in the db
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = Password.hash(password);
+    }
+*/
+
+    // getters and setters...
+
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
     }
 
     public String getEmail() {
@@ -55,6 +91,6 @@ public class User implements Serializable {
     }
 
     public void setPassword(String password) {
-        this.password = Password.hash(password);
+        this.password = password;
     }
 }

@@ -15,24 +15,15 @@ import java.io.IOException;
 @WebServlet(name = "controllers.LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String name = request.getParameter("username");
-            if(name.equals("codeup")){
-                request.setAttribute("name", name);
-                request.getRequestDispatcher("/profile.jsp");
-            }
-//        if (request.getSession().getAttribute("user") != null && request.getSession().getAttribute("password") != null) {
-//            response.sendRedirect("/profile");
-//            return;
-//        }
-//        request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+       request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         User userAttempt = new User();
-        userAttempt.setUsername(request.getParameter("username"));
+        userAttempt.setUserName(request.getParameter("username"));
         userAttempt.setPassword(request.getParameter("password"));
         
-        User userFromDB = DaoFactory.getUsersDao().findByUsername(userAttempt.getUsername());
+        User userFromDB = DaoFactory.getUsersDao().findByUsername(userAttempt.getUserName());
 
 
         if (userFromDB == null) {
