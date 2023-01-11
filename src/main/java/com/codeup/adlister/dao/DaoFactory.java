@@ -1,9 +1,12 @@
 package com.codeup.adlister.dao;
 import com.codeup.adlister.controllers.Config;
+import com.codeup.adlister.models.WandAd;
+
 public class DaoFactory {
     private static Ads adsDao;
     private static Users usersDao;
     private static Wands wandsDao;
+    private static WandAds wandAdDao;
     private static final Config config = new Config();
 
     public static Ads getAdsDao() {
@@ -25,5 +28,12 @@ public class DaoFactory {
             wandsDao = new MySQLWandsDao(config);
         }
         return wandsDao;
+    }
+
+    public static WandAds getWandAdsDao(){
+        if(wandAdDao == null){
+            wandAdDao = new MySQLWandAdsDao(config);
+        }
+        return wandAdDao;
     }
 }

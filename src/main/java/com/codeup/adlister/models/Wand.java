@@ -22,6 +22,15 @@ public class Wand implements Serializable {
         this.imageUri = imageUri;
         this.userId = userId;
     }
+    public Wand(String wandName, String coreMaterial, String woodType, String useCategory, int age, String imageUri, int userId){
+        this.wandName = wandName;
+        this.coreMaterial = coreMaterial;
+        this.woodType = woodType;
+        this.useCategory = useCategory;
+        this.age = age;
+        this.imageUri = imageUri;
+        this.userId = userId;
+    }
 
     // getters and setters...
     public int getId() {

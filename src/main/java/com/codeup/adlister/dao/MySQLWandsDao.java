@@ -39,7 +39,7 @@ public class MySQLWandsDao implements Wands{
         String query = "SELECT * FROM wands as W JOIN wand_ads as WA ON W.id = WA.wand_id JOIN ads as A ON WA.ad_id = A.id WHERE A.id = ? LIMIT 1";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
-            stmt.setInt(1, adId);
+            stmt.setInt(1, adId + 1);
             return extractWand(stmt.executeQuery());
         } catch(SQLException e){
             throw new RuntimeException("Error finding wand by adId where adId = " + adId, e);
@@ -63,7 +63,7 @@ public class MySQLWandsDao implements Wands{
     }
 
     @Override
-    public Long insert(Wand wand){
+    public void insert(Wand wand){
             String query = "INSERT INTO wands(wand_name, core_material, wood_type, use_category, age, image, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try{
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -75,9 +75,6 @@ public class MySQLWandsDao implements Wands{
             stmt.setString(6, wand.getImageUri());
             stmt.setInt(7, wand.getUserId());
             stmt.execute();
-            ResultSet rs = stmt.getGeneratedKeys();
-            rs.next();
-            return rs.getLong(1);
         } catch(SQLException e){
             throw new RuntimeException("Error creating new wand '" + wand.getWandName() + "'", e);
         }
