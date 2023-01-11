@@ -13,7 +13,7 @@
         <h1>Welcome to Wanderful! Where we have rare wands for everyday wizards.</h1>
         <div>${error}</div>
         
-        <form action="/login" method="POST">
+        <form action="login" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input id="username" name="username" class="form-control" type="text">
