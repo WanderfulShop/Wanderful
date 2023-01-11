@@ -18,6 +18,7 @@
 
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-    <h1>${user_name.}</h1>
+    <h1>${user.userName}</h1>
+    <h1>${}</h1>
 </body>
 </html>

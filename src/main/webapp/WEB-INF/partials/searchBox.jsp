@@ -20,8 +20,9 @@
   </style>
 </head>
 <body>
-<input type="text" id="myInput"  placeholder="Search wands">
-
+<form class="form-inline my-2 my-lg-0 ms-auto" role="search" method="post" action="/search">
+<input type="text" id="myInput" name="username" class="form-control" placeholder="Search wands">
+</form>
 </body>
 
 </html>

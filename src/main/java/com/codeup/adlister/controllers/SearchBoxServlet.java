@@ -1,7 +1,7 @@
 package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
-import com.codeup.adlister.models.User;
+import com.codeup.adlister.models.Wand;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.DataOutput;
 import java.io.IOException;
 
-@WebServlet(name = "controllers.SearchServlet", urlPatterns = "/search")
-public class SearchServlet extends HttpServlet {
+@WebServlet(name = "controllers.SearchBoxServlet", urlPatterns = "/search")
+public class SearchBoxServlet extends HttpServlet {
     //get information from navbar.jsp form✅
     //Query the database for the User✅
     //Display relevant information for the user
@@ -21,9 +21,9 @@ public class SearchServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        String username = request.getParameter("username");
-        User user = DaoFactory.getUsersDao().findByUsername(username);
-        request.setAttribute("user", user);
+        String wands = request.getParameter("wands");
+        Wand wand = DaoFactory.getWandsDao().findByWandName(wands);
+        request.setAttribute("wand", wand);
         request.getRequestDispatcher("/WEB-INF/search.jsp").forward(request, response);
     }
 
