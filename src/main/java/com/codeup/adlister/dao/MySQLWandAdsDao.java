@@ -22,16 +22,16 @@ public class MySQLWandAdsDao implements WandAds{
         }
     }
     @Override
-    public Long insert(WandAd wandAd) {
+    public void insert(WandAd wandAd) {
         String query = "INSERT INTO wand_ads(wand_id, ad_id) VALUES (?, ?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, String.valueOf(wandAd.getWandId()));
             stmt.setString(2, String.valueOf(wandAd.getAdId()));
             stmt.executeUpdate();
-            ResultSet rs = stmt.getGeneratedKeys();
+/*            ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
-            return rs.getLong(1);
+            return rs.getLong(1);*/
         } catch (SQLException e) {
             throw new RuntimeException("Error inserting wandAd" , e);
         }

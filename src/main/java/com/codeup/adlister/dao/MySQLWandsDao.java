@@ -63,7 +63,7 @@ public class MySQLWandsDao implements Wands{
     }
 
     @Override
-    public Long insert(Wand wand){
+    public void insert(Wand wand){
             String query = "INSERT INTO wands(wand_name, core_material, wood_type, use_category, age, image, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try{
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -75,9 +75,6 @@ public class MySQLWandsDao implements Wands{
             stmt.setString(6, wand.getImageUri());
             stmt.setInt(7, wand.getUserId());
             stmt.execute();
-            ResultSet rs = stmt.getGeneratedKeys();
-            rs.next();
-            return rs.getLong(1);
         } catch(SQLException e){
             throw new RuntimeException("Error creating new wand '" + wand.getWandName() + "'", e);
         }

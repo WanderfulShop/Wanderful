@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface Wands {
     Wand findByWandName(String wandName);
-    Long insert(Wand wand);
+    void insert(Wand wand);
     Wand findWandByAdId(int adId);
 
 }

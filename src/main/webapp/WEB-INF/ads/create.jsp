@@ -8,7 +8,7 @@
 <body>
     <div class="container">
         <h1>Create a new Ad</h1>
-        <form action="ads/create" method="post">
+        <form action="/ads/create" method="post">
             <div class="form-group">
                 <label for="title">Title</label>
                 <input id="title" name="title" class="form-control" type="text">
@@ -26,6 +26,7 @@
                 <label for="coreMaterial">Wand Core Material</label>
                 <input id="coreMaterial" name="coreMaterial" class="form-control" type="text"/>
             </div>
+            <div>'
                 <label for="woodType">Wood Species</label>
                 <input id="woodType" name="woodType" class="form-control" type="text"/>
             </div>
