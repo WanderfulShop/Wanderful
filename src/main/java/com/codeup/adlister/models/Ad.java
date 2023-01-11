@@ -17,10 +17,11 @@ public class Ad implements Serializable {
         this.adDescription = adDescription;
     }
 
-    public Ad(long id, String adTitle, String adDescription) {
+    public Ad(long id, String adTitle, String adDescription, Date creationDate) {
         this.id = id;
         this.adTitle = adTitle;
         this.adDescription = adDescription;
+        this.creationDate = creationDate;
     }
 
     // getters and setters...

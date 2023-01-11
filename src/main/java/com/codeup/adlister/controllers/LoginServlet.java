@@ -19,18 +19,17 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        User userAttempt = new User();
-        userAttempt.setUserName(request.getParameter("username"));
-        userAttempt.setPassword(request.getParameter("password"));
+        String rawInputUsername = request.getParameter("username");
         String rawInputPw = request.getParameter("password");
         
-        User userFromDB = DaoFactory.getUsersDao().findByUsername(userAttempt.getUserName());
+        User userFromDB = DaoFactory.getUsersDao().findByUsername(rawInputUsername);
 
 
         if (userFromDB == null) {
             /* error msg here: No username entered*/
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/login.jsp");
             request.setAttribute("error", "Invalid Username!");
+            request.setAttribute("username", rawInputUsername);
             requestDispatcher.forward(request, response);
             return;
         }
@@ -44,6 +43,9 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/profile");
         } else {
             request.getSession().setAttribute("error", "Invalid password");
+
+            request.getSession().setAttribute("username", rawInputUsername);
+
             request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
         }
     }
