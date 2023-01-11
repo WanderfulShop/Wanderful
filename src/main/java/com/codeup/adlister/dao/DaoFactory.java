@@ -3,7 +3,8 @@ import com.codeup.adlister.controllers.Config;
 public class DaoFactory {
     private static Ads adsDao;
     private static Users usersDao;
-    private static Config config = new Config();
+    private static Wands wandsDao;
+    private static final Config config = new Config();
 
     public static Ads getAdsDao() {
         if (adsDao == null) {
@@ -17,5 +18,12 @@ public class DaoFactory {
             usersDao = new MySQLUsersDao(config);
         }
         return usersDao;
+    }
+
+    public static Wands getWandsDao(){
+        if(wandsDao == null){
+            wandsDao = new MySQLWandsDao(config);
+        }
+        return wandsDao;
     }
 }

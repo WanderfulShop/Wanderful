@@ -9,7 +9,7 @@ import java.sql.*;
 
 public class MySQLWandsDao implements Wands{
 
-    private Connection connection;
+    private final Connection connection;
 
     public MySQLWandsDao(Config config) {
         try {
@@ -35,6 +35,17 @@ public class MySQLWandsDao implements Wands{
         }
     }
 
+    public Wand findWandByAdId(int adId){
+        String query = "SELECT * FROM wands as W JOIN wand_ads as WA ON W.id = WA.wand_id JOIN ads as A ON WA.ad_id = A.id WHERE A.id = ? LIMIT 1";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setInt(1, adId);
+            return extractWand(stmt.executeQuery());
+        } catch(SQLException e){
+            throw new RuntimeException("Error finding wand by adId where adId = " + adId, e);
+        }
+
+    }
     private Wand extractWand(ResultSet rs) throws SQLException {
         if(! rs.next()){
             return null;

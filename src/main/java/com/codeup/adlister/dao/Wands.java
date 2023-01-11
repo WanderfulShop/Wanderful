@@ -9,4 +9,7 @@ public interface Wands {
     Wand findByWandName(String wandName);
     Long insert(Wand wand);
 
+    Wand findWandByAdId(int adId);
+
+    // Wand findWandByUserId(int adId);
 }
