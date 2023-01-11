@@ -30,7 +30,7 @@ public class SearchServlet extends HttpServlet {
         User userFromDB = DaoFactory.getUsersDao().findByUsername(user.getUserName());
 
         if (userFromDB == null) {
-            /* error msg here: No username entered*/
+            /* error msg here: No username found*/
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/usersearch.jsp");
             request.setAttribute("noUser", "No user found");
             requestDispatcher.forward(request, response);

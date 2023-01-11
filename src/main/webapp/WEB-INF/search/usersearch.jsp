@@ -22,5 +22,13 @@
   <h1>You are viewing, ${user.userName}'s page!</h1>
 </div>
 <h1>${user.userName}</h1>
+<h3>placeholder IMG</h3>
+<h2>Here are the featured Ads for the day: </h2>
+<c:forEach var="ad" items="${ad}">
+  <div class="ads">
+    <h2>${ad.adTitle}</h2>
+    <h2>Description: ${ad.adDescription}</h2>
+  </div>
+</c:forEach>
 </body>
 </html>
