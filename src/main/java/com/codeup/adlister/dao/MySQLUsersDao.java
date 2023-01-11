@@ -24,7 +24,7 @@ public class MySQLUsersDao implements Users {
 
     @Override
     public User findByUsername(String userName) {
-        String query = "SELECT * FROM users WHERE user_name = ? LIMIT 1";
+        String query = "SELECT * FROM users as U WHERE U.user_name = ? LIMIT 1";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, userName);
@@ -34,6 +34,17 @@ public class MySQLUsersDao implements Users {
         }
     }
 
+    @Override
+    public User findUserByAdId(int adId){
+        String query = "SELECT * FROM users as U JOIN wands as W on U.id = W.user_id JOIN wand_ads as WA ON W.id = WA.wand_id WHERE WA.ad_id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setInt(1, adId);
+            return extractUser(stmt.executeQuery());
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding a user by adId: " + adId, e);
+        }
+    }
     @Override
     public Long insert(User user) {
         String query = "INSERT INTO users(user_name, first_name, last_name, school, email) VALUES (?, ?, ?, ?, ?)";

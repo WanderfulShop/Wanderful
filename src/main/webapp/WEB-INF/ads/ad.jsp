@@ -18,8 +18,16 @@
 <div class="container">
 
     <div class="col-md-6">
-        <h1>${ad.title}</h1>
-        <p>${ad.description}</p>
+        <h1>${ad.adTitle}</h1>
+        <p>${ad.adDescription}</p>
+        <p>${ad.creationDate}</p>
+        <p>Wand Name: ${wand.wandName}</p>
+        <p>Core Material: ${wand.coreMaterial}</p>
+        <p>Wood Type: ${wand.woodType}</p>
+        <p>Category: ${wand.useCategory}</p>
+        <p>Age: ${wand.age}</p>
+        <p>Seller: ${user.userName}</p>
+        <p>Contact Seller at: ${user.email}</p>
     </div>
 
 </div>

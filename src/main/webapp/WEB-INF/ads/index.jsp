@@ -14,8 +14,9 @@
 
     <c:forEach var="ad" items="${ads}" varStatus="loop">
         <div class="col-md-6">
-            <h2>${ad.title}</h2>
-            <p>${ad.description}</p>
+            <h2>${ad.adTitle}</h2>
+            <p>${ad.adDescription}</p>
+            <p>${ad.creationDate}</p>
             <form action="ads" method="post">
                 <input type="hidden" name="adId" value="${loop.index}">
                 <input type="submit"/>

@@ -20,6 +20,8 @@ public class AdsIndexServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int adId = Integer.parseInt(request.getParameter("adId"));
         request.setAttribute("ad", DaoFactory.getAdsDao().all().get(adId));
+        request.setAttribute("wand", DaoFactory.getWandsDao().findWandByAdId(adId));
+        request.setAttribute("user", DaoFactory.getUsersDao().findUserByAdId(adId));
         request.getRequestDispatcher("WEB-INF/ads/ad.jsp").forward(request, response);
     }
 }
