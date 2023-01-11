@@ -28,33 +28,21 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String passwordConfirmation = request.getParameter("confirmPassword");
 
+
         // validate input
-        if(username.isEmpty()){
-            request.setAttribute("error", "invalid username");
+
+        if(username.isEmpty() || email.isEmpty() || password.isEmpty() || ! password.equals(passwordConfirmation)){
+            request.setAttribute("error", "invalid input");
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/register.jsp");
+            request.setAttribute("username", username);
+            request.setAttribute("firstName", firstName);
+            request.setAttribute("lastName", lastName);
+            request.setAttribute("school", school);
+            request.setAttribute("email", email);
             requestDispatcher.forward(request, response);
             return;
         }
 
-        if(email.isEmpty()){
-            request.setAttribute("error", "invalid email");
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/register.jsp");
-            requestDispatcher.forward(request, response);
-            return;
-        }
-
-        if(password.isEmpty()){
-            request.setAttribute("error", "invalid password");
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/register.jsp");
-            requestDispatcher.forward(request, response);
-            return;
-        }
-        if(! password.equals(passwordConfirmation)){
-            request.setAttribute("error", "passwords do not match");
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/register.jsp");
-            requestDispatcher.forward(request, response);
-            return;
-        }
 
 
         // create and save a new user
