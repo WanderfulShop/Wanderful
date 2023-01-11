@@ -13,7 +13,6 @@ public class DaoFactory {
     private static WandAds wandAdDao;
     private static final Config config = new Config();
 
-    private static Wands wandsDao;
 
     public static Ads getAdsDao() {
         if (adsDao == null) {

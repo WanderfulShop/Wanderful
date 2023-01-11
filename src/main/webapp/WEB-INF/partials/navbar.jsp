@@ -9,7 +9,7 @@
         <a class="nav-link m-auto" href="/login">Login</a>
 <%-- Find Uers on Home page --%>
         <div>
-            <form class="form-inline my-2 my-lg-0 ms-auto" role="search" method="post" action="/search">
+            <form class="form-inline my-2 my-lg-0 ms-auto" role="search" method="post" action="/search/usersearch">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">@</span>

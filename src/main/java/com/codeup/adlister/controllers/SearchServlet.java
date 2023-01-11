@@ -12,26 +12,26 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.DataOutput;
 import java.io.IOException;
 
-@WebServlet(name = "controllers.SearchServlet", urlPatterns = "/search")
+@WebServlet(name = "controllers.SearchServlet", urlPatterns = "/search/usersearch")
 public class SearchServlet extends HttpServlet {
     //get information from navbar.jsp form✅
     //Query the database for the User✅
     //Display relevant information for the user
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/search.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/search/usersearch.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String username = request.getParameter("username");
         User user = DaoFactory.getUsersDao().findByUsername(username);
         request.setAttribute("user", user);
-        request.getRequestDispatcher("/WEB-INF/search.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/search/usersearch.jsp").forward(request, response);
 
         User userFromDB = DaoFactory.getUsersDao().findByUsername(user.getUserName());
 
         if (userFromDB == null) {
             /* error msg here: No username entered*/
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/search.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/usersearch.jsp");
             request.setAttribute("noUser", "No user found");
             requestDispatcher.forward(request, response);
             return;
