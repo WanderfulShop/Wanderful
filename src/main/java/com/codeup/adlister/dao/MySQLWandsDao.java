@@ -39,7 +39,7 @@ public class MySQLWandsDao implements Wands{
         String query = "SELECT * FROM wands as W JOIN wand_ads as WA ON W.id = WA.wand_id JOIN ads as A ON WA.ad_id = A.id WHERE A.id = ? LIMIT 1";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
-            stmt.setInt(1, adId);
+            stmt.setInt(1, adId + 1);
             return extractWand(stmt.executeQuery());
         } catch(SQLException e){
             throw new RuntimeException("Error finding wand by adId where adId = " + adId, e);

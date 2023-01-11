@@ -9,10 +9,23 @@
     <jsp:include page="partials/navbar.jsp" />
     <div class="container">
         <h1>Please fill in your information.</h1>
-        <form action="/register" method="post">
+        <form action="register" method="post">
+            <p style="color: red">${error}</p>
             <div class="form-group">
                 <label for="username">Username</label>
                 <input id="username" name="username" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+                <label for="firstName">First name</label>
+                <input id="firstName" name="firstName" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last name</label>
+                <input id="lastName" name="lastName" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+                <label for="school">school</label>
+                <input id="school" name="school" class="form-control" type="text">
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
@@ -23,8 +36,8 @@
                 <input id="password" name="password" class="form-control" type="password">
             </div>
             <div class="form-group">
-                <label for="confirm_password">Confirm Password</label>
-                <input id="confirm_password" name="confirm_password" class="form-control" type="password">
+                <label for="confirmPassword">Confirm Password</label>
+                <input id="confirmPassword" name="confirmPassword" class="form-control" type="password">
             </div>
             <input type="submit" class="btn btn-primary btn-block">
         </form>
