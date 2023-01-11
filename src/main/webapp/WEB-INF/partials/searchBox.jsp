@@ -20,7 +20,7 @@
   </style>
 </head>
 <body>
-<form class="form-inline my-2 my-lg-0 ms-auto" role="search" method="post" action="/search/wandsearch">
+<form class="form-inline my-2 my-lg-0 ms-auto" role="search" method="post" action="search/wandsearch">
 <input type="text" id="myInput" name="username" class="form-control" placeholder="Search wands">
 </form>
 </body>
