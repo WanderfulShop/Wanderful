@@ -43,7 +43,9 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/profile");
         } else {
             request.getSession().setAttribute("error", "Invalid password");
+
             request.getSession().setAttribute("username", rawInputUsername);
+
             request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
         }
     }
