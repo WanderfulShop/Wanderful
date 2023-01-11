@@ -2,7 +2,6 @@ package com.codeup.adlister.dao;
 import com.codeup.adlister.controllers.Config;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
-
 import java.sql.*;
 
 public class MySQLUsersDao implements Users {
@@ -24,7 +23,7 @@ public class MySQLUsersDao implements Users {
 
     @Override
     public User findByUsername(String userName) {
-        String query = "SELECT * FROM users WHERE user_name = ? LIMIT 1";
+        String query = "SELECT * FROM users as U WHERE U.user_name = ? LIMIT 1";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, userName);
@@ -35,22 +34,32 @@ public class MySQLUsersDao implements Users {
     }
 
     @Override
-    public Long insert(User user) {
-        String query = "INSERT INTO users(user_name, first_name, last_name, school, email) VALUES (?, ?, ?, ?, ?)";
+    public User findUserByAdId(int adId){
+        String query = "SELECT * FROM users as U JOIN wands as W on U.id = W.user_id JOIN wand_ads as WA ON W.id = WA.wand_id WHERE WA.ad_id = ?";
         try {
-            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            stmt.setString(1, user.getUserName());
-            stmt.setString(2, user.getFirstName());
-            stmt.setString(3, user.getLastName());
-            stmt.setString(4, user.getSchool());
-            stmt.setString(5, user.getEmail());
-            stmt.executeUpdate();
-            ResultSet rs = stmt.getGeneratedKeys();
-            rs.next();
-            return rs.getLong(1);
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setInt(1, adId);
+            return extractUser(stmt.executeQuery());
         } catch (SQLException e) {
-            throw new RuntimeException("Error creating new user", e);
+            throw new RuntimeException("Error finding a user by adId: " + adId, e);
         }
+    }
+    @Override
+    public Long insert(User user) throws SQLException {
+        String query = "INSERT INTO users(user_name, first_name, last_name, school, email, user_password) VALUES (?, ?, ?, ?, ?, ?)";
+
+        PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        stmt.setString(1, user.getUserName());
+        stmt.setString(2, user.getFirstName());
+        stmt.setString(3, user.getLastName());
+        stmt.setString(4, user.getSchool());
+        stmt.setString(5, user.getEmail());
+        stmt.setString(6, user.getPassword());
+        stmt.executeUpdate();
+        ResultSet rs = stmt.getGeneratedKeys();
+        rs.next();
+        return rs.getLong(1);
+
     }
 
     private User extractUser(ResultSet rs) throws SQLException {
