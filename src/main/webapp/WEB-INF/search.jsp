@@ -18,7 +18,11 @@
 
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+    <div>${noUser}</div>
+    <div class="container">
+        <h1>You are viewing, ${user.userName}'s page!</h1>
+    </div>
     <h1>${user.userName}</h1>
-    <h1>${}</h1>
+    <h1>${wand.wandName}</h1>
 </body>
 </html>
