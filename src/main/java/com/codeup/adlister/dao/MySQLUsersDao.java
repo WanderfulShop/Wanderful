@@ -2,7 +2,6 @@ package com.codeup.adlister.dao;
 import com.codeup.adlister.controllers.Config;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
-
 import java.sql.*;
 
 public class MySQLUsersDao implements Users {
@@ -46,23 +45,21 @@ public class MySQLUsersDao implements Users {
         }
     }
     @Override
-    public Long insert(User user) {
+    public Long insert(User user) throws SQLException {
         String query = "INSERT INTO users(user_name, first_name, last_name, school, email, user_password) VALUES (?, ?, ?, ?, ?, ?)";
-        try {
-            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            stmt.setString(1, user.getUserName());
-            stmt.setString(2, user.getFirstName());
-            stmt.setString(3, user.getLastName());
-            stmt.setString(4, user.getSchool());
-            stmt.setString(5, user.getEmail());
-            stmt.setString(6, user.getPassword());
-            stmt.executeUpdate();
-            ResultSet rs = stmt.getGeneratedKeys();
-            rs.next();
-            return rs.getLong(1);
-        } catch (SQLException e) {
-            throw new RuntimeException("Error creating new user for " + user.getFirstName() + " " + user.getLastName(), e);
-        }
+
+        PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        stmt.setString(1, user.getUserName());
+        stmt.setString(2, user.getFirstName());
+        stmt.setString(3, user.getLastName());
+        stmt.setString(4, user.getSchool());
+        stmt.setString(5, user.getEmail());
+        stmt.setString(6, user.getPassword());
+        stmt.executeUpdate();
+        ResultSet rs = stmt.getGeneratedKeys();
+        rs.next();
+        return rs.getLong(1);
+
     }
 
     private User extractUser(ResultSet rs) throws SQLException {
