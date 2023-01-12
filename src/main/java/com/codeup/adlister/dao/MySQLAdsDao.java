@@ -69,6 +69,18 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error getting Ad by title", e);
         }
     }
+
+    public List<Ad> getAdsOfTheDay() {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM ads ORDER BY creation_date LIMIT 2");
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving Ads of the Day.", e);
+        }
+    }
+
     private Ad extractAd(ResultSet rs) throws SQLException {
         // rs.next();
         return new Ad(

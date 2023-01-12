@@ -17,17 +17,14 @@
     <h3>Full Name: ${user.firstName}</h3>
     <h3>placeholder IMG</h3>
 
+<%--<jsp:include page="/WEB-INF/partials/AdsOfTheDay.jsp"></jsp:include>--%>
 <h2>Featured AD of the day: </h2>
-    <c:forEach var="ad" items="${ads}">
-        <div>
-            <h2>${ad.adTitle}</h2>
-            <h2>${ad.adDescription}</h2>
-        </div>
-    </c:forEach>
-
-
-
-
+<c:forEach var="ad" items="${ads}">
+    <div>
+        <h2>${ad.adTitle}</h2>
+        <h2>${ad.adDescription}</h2>
+    </div>
+</c:forEach>
 
 </body>
 </html>

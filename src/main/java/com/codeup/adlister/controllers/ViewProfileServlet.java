@@ -23,10 +23,9 @@ public class ViewProfileServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
-        //With the request I am SETTING the attribute with my desired input (all the ads) and PASSING it to the JSP with the help of the DISPATCHER
-        request.setAttribute("ads", DaoFactory.getAdsDao().all());
+        // With the request I am SETTING the attribute with my desired input (all the ads) and PASSING it to the JSP with the help of the DISPATCHER
+        request.setAttribute("ads", DaoFactory.getAdsDao().getAdsOfTheDay());
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
-
     }
 
 }
