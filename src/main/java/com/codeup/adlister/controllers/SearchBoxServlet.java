@@ -1,6 +1,7 @@
 package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
+import com.codeup.adlister.models.User;
 import com.codeup.adlister.models.Wand;
 
 import javax.servlet.RequestDispatcher;
@@ -25,6 +26,8 @@ public class SearchBoxServlet extends HttpServlet {
         String wands = request.getParameter("wands");
         Wand wand = DaoFactory.getWandsDao().findByWandName(wands);
         request.setAttribute("wand", wand);
+        User seller = DaoFactory.getUsersDao().getUserByWandName(wands);
+        request.setAttribute("seller", seller);
 
 
         if (wand == null) {

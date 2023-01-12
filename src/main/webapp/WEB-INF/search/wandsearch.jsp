@@ -41,8 +41,8 @@
             <p>Wood Type: ${wand.woodType}</p>
             <p>Category: ${wand.useCategory}</p>
             <p>Age: ${wand.age}</p>
-            <p>Seller: ${user.userName}</p>
-            <p>Contact Seller at: ${user.email}</p>
+            <p>Seller: ${seller.userName}</p>
+            <p>Contact Seller at: ${seller.email}</p>
         </div>
 
     </div>

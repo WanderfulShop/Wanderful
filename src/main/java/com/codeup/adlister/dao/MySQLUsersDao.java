@@ -93,4 +93,16 @@ public class MySQLUsersDao implements Users {
         );
     }
 
+    @Override
+    public User getUserByWandName(String wandName){
+        String query = "SELECT * FROM users as U JOIN wands as W ON U.id = W.user_id WHERE W.wand_name = ? LIMIT 1";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, wandName);
+            return extractUser(stmt.executeQuery());
+        } catch(SQLException e){
+            throw new RuntimeException("Error finding User by Wand Name where Wand Name = " + wandName, e);
+        }
+    }
+
 }

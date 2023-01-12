@@ -11,4 +11,6 @@ public interface Users {
     Long insert(User user) throws SQLException;
 
     String getPasswordByUsername(String rawInputUsername);
+
+    User getUserByWandName(String wands);
 }

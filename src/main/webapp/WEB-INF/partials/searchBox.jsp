@@ -24,7 +24,7 @@
 <div class="form-inline align-items-center justify-content-end">
   <div>
     <form role="search" method="post" action="/search/wandsearch">
-      <input type="text" id="myInput" name="username" class="form-control" placeholder="Search wands">
+      <input type="text" id="myInput" name="wands" class="form-control" placeholder="Search wands">
     </form>
   </div>
 </div>
