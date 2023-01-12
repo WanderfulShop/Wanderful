@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"%>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="visuals/main.css">
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Please Log In" />
     </jsp:include>
 </head>
 <body>
+
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
 
