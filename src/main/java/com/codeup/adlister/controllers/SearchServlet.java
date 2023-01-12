@@ -25,17 +25,17 @@ public class SearchServlet extends HttpServlet {
         String username = request.getParameter("username");
         User user = DaoFactory.getUsersDao().findByUsername(username);
         request.setAttribute("user", user);
-        request.getRequestDispatcher("/WEB-INF/search/usersearch.jsp").forward(request, response);
+//        request.getRequestDispatcher("/WEB-INF/search/usersearch.jsp").forward(request, response);
 
-        User userFromDB = DaoFactory.getUsersDao().findByUsername(user.getUserName());
 
-        if (userFromDB == null) {
+        if (user == null) {
             /* error msg here: No username found*/
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/usersearch.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/search/usersearch.jsp");
             request.setAttribute("noUser", "No user found");
             requestDispatcher.forward(request, response);
             return;
         }
+        request.getRequestDispatcher("/WEB-INF/search/usersearch.jsp").forward(request, response);
     }
 
 }

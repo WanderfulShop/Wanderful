@@ -25,17 +25,16 @@ public class SearchBoxServlet extends HttpServlet {
         String wands = request.getParameter("wands");
         Wand wand = DaoFactory.getWandsDao().findByWandName(wands);
         request.setAttribute("wand", wand);
-        request.getRequestDispatcher("/WEB-INF/search/wandsearch.jsp").forward(request, response);
 
-        Wand wandFromDB = DaoFactory.getWandsDao().findByWandName(wand.getWandName());
 
-        if (wandFromDB == null) {
+        if (wand == null) {
             /* error msg here: No wand found*/
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/usersearch.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/search/wandsearch.jsp");
             request.setAttribute("noWand", "No wands found");
             requestDispatcher.forward(request, response);
             return;
         }
+        request.getRequestDispatcher("/WEB-INF/search/wandsearch.jsp").forward(request, response);
     }
 
 }

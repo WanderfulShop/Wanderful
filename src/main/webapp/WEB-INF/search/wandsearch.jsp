@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: gabriellekhokhar
@@ -18,7 +19,13 @@
 
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-    <div>${noWand}</div>
+    <c:choose>
+        <c:when test="${wand == null}">
+    <div class="block ms-auto me-auto mt-4">
+        <h1 class="text-center">${noWand}</h1>
+    </div>
+        </c:when>
+        <c:otherwise>
     <div class="container">
         <h1>You are viewing, ${wand.wandName}!</h1>
     </div>
@@ -39,5 +46,14 @@
         </div>
 
     </div>
+        </c:otherwise>
+    </c:choose>
+    <h2 class="text-center mt-4">Here are the featured Ads for the day: </h2>
+    <c:forEach var="ad" items="${ad}">
+        <div class="ads">
+            <h2>${ad.adTitle}</h2>
+            <h2>Description: ${ad.adDescription}</h2>
+        </div>
+    </c:forEach>
 </body>
 </html>
