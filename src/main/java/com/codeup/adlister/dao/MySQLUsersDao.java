@@ -20,7 +20,6 @@ public class MySQLUsersDao implements Users {
         }
     }
 
-
     @Override
     public User findByUsername(String userName) {
         String query = "SELECT * FROM users as U WHERE U.user_name = ? LIMIT 1";
@@ -44,6 +43,7 @@ public class MySQLUsersDao implements Users {
             throw new RuntimeException("Error finding a user by adId: " + adId, e);
         }
     }
+
     @Override
     public Long insert(User user) throws SQLException {
         String query = "INSERT INTO users(user_name, first_name, last_name, school, email, user_password) VALUES (?, ?, ?, ?, ?, ?)";
@@ -61,6 +61,10 @@ public class MySQLUsersDao implements Users {
         return rs.getLong(1);
     }
 
+    /**
+     * @param userName is a string holding the username to look up
+     * @return is a string holding the hashed password. Use this pw to Password.check()
+     * */
     public String getPasswordByUsername(String userName){
         String query = "SELECT user_password FROM users as U WHERE U.user_name = ? LIMIT 1";
         try {
