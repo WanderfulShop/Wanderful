@@ -15,7 +15,13 @@
     <h1>Hello, ${user.userName}</h1>
     <h2>Profile Information</h2>
     <h3>Full Name: ${user.firstName} ${user.lastName}</h3>
+    <p>School: ${user.school}</p>
+    <p>Email: ${user.email}</p>
     <h3>placeholder IMG</h3>
+    <form action="profile" method="post">
+        <input type="hidden" value="true" name="editProfile">
+        <input type="submit"/>
+    </form>
 
 <%--<jsp:include page="/WEB-INF/partials/AdsOfTheDay.jsp"></jsp:include>--%>
 <h2>Featured AD of the day: </h2>

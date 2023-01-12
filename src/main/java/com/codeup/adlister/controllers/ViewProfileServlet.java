@@ -3,6 +3,7 @@ package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.Ads;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,6 +25,11 @@ public class ViewProfileServlet extends HttpServlet {
             return;
         }
         // With the request I am SETTING the attribute with my desired input (all the ads) and PASSING it to the JSP with the help of the DISPATCHER
+        User user = (User) request.getSession().getAttribute("user");
+        System.out.println("user.getSchool() = " + user.getSchool());
+        System.out.println("user.getFirstName() = " + user.getFirstName());
+        System.out.println("user.getLastName() = " + user.getLastName());
+        System.out.println("user.getEmail() = " + user.getEmail());
         request.setAttribute("ads", DaoFactory.getAdsDao().getAdsOfTheDay());
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
     }
