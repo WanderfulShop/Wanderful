@@ -59,7 +59,19 @@ public class MySQLUsersDao implements Users {
         ResultSet rs = stmt.getGeneratedKeys();
         rs.next();
         return rs.getLong(1);
+    }
 
+    public String getPasswordByUsername(String userName){
+        String query = "SELECT user_password FROM users as U WHERE U.user_name = ? LIMIT 1";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, userName);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            return rs.getString("user_password");
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding a user by username: " + userName, e);
+        }
     }
 
     private User extractUser(ResultSet rs) throws SQLException {

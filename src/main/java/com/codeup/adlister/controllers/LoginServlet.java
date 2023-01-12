@@ -23,12 +23,10 @@ public class LoginServlet extends HttpServlet {
         String rawInputUsername = request.getParameter("username");
         String rawInputPw = request.getParameter("password");
         
+        String pwFromDb = DaoFactory.getUsersDao().getPasswordByUsername(rawInputUsername);
         User userFromDB = DaoFactory.getUsersDao().findByUsername(rawInputUsername);
 
-        System.out.println(rawInputUsername);
-        System.out.println(userFromDB.getUserName());
-
-        if (userFromDB == null) {
+        if (pwFromDb == null) {
             /* error msg here: No username entered*/
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/login.jsp");
             request.setAttribute("error", "Invalid Username!");
@@ -38,16 +36,12 @@ public class LoginServlet extends HttpServlet {
         }
 
         // checking vars through sout®
-        System.out.println("userFromDB.getPassword() = " + userFromDB.getPassword());
+        System.out.println("pwFromDb = " + pwFromDb);
         System.out.println("rawInputPw = " + rawInputPw);
 
 
         // validate password matches db
-        boolean validAttempt =  BCrypt.checkpw(rawInputPw, userFromDB.getPassword());
-        // BCrypt is working
-        // Is the way password is saved to db incorrect?
-        // insert statement in dao
-        // refactor the insert?
+        boolean validAttempt =  BCrypt.checkpw(rawInputPw, pwFromDb);
 
 
         if (validAttempt) {
