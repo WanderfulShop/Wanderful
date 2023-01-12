@@ -9,6 +9,7 @@
         <jsp:param name="title" value="Your Profile" />
     </jsp:include>
     <link rel="stylesheet" type="text/css" href="visuals/main.css">
+    <link rel="stylesheet" type="text/css" href="visuals/profile.css">
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp"></jsp:include>
@@ -18,7 +19,7 @@
     <p>School: ${user.school}</p>
     <p>Email: ${user.email}</p>
     <h3>placeholder IMG</h3>
-    <form action="profile" method="post">
+    <form action="/profile/viewProfile" method="post">
         <input type="hidden" value="true" name="editProfile">
         <input type="submit"/>
     </form>

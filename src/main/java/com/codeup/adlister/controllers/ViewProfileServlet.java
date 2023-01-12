@@ -16,7 +16,7 @@ import java.util.List;
 
 
 //get info from the login servlet
-@WebServlet(name = "controllers.ViewProfileServlet", urlPatterns = "/profile")
+@WebServlet(name = "controllers.ViewProfileServlet", urlPatterns = "/profile/viewProfile")
 public class ViewProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,15 +31,18 @@ public class ViewProfileServlet extends HttpServlet {
         System.out.println("user.getLastName() = " + user.getLastName());
         System.out.println("user.getEmail() = " + user.getEmail());
         request.setAttribute("ads", DaoFactory.getAdsDao().getAdsOfTheDay());
-        request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/profile/viewProfile.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        boolean editProfile = Boolean.parseBoolean((String) request.getAttribute("editProfile"));
+        request.getRequestDispatcher("/WEB-INF/profile/editProfile.jsp").forward(request, response);
+
+
+        /*        boolean editProfile = Boolean.parseBoolean((String) request.getAttribute("editProfile"));
         if(editProfile){
-            request.getRequestDispatcher("/WEB-INF/editProfile.jsp").forward(request, response);
-        }
+            request.getRequestDispatcher("/WEB-INF/profile/edit.jsp").forward(request, response);
+        }*/
 
     }
 }
