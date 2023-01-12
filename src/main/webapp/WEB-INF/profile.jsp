@@ -14,7 +14,7 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp"></jsp:include>
     <h1>Hello, ${user.userName}</h1>
     <h2>Profile Information</h2>
-    <h3>Full Name: ${user.firstName}</h3>
+    <h3>Full Name: ${user.firstName} ${user.lastName}</h3>
     <h3>placeholder IMG</h3>
 
 <%--<jsp:include page="/WEB-INF/partials/AdsOfTheDay.jsp"></jsp:include>--%>

@@ -28,6 +28,14 @@ public class ViewProfileServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
     }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        boolean editProfile = Boolean.parseBoolean((String) request.getAttribute("editProfile"));
+        if(editProfile){
+            request.getRequestDispatcher("/WEB-INF/editProfile.jsp").forward(request, response);
+        }
+
+    }
 }
 
 
