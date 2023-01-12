@@ -9,4 +9,6 @@ public interface Users {
     User findByUsername(String username);
     User findUserByAdId(int adId);
     Long insert(User user) throws SQLException;
+
+    String getPasswordByUsername(String rawInputUsername);
 }

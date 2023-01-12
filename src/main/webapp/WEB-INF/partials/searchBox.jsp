@@ -20,6 +20,7 @@
   </style>
 </head>
 <body>
+
 <div class="form-inline align-items-center justify-content-end">
   <div>
     <form role="search" method="post" action="/search/wandsearch">
@@ -27,6 +28,7 @@
     </form>
   </div>
 </div>
+
 </body>
 
 </html>

@@ -20,13 +20,16 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        // get user input from the post request.
         String rawInputUsername = request.getParameter("username");
         String rawInputPw = request.getParameter("password");
-        
+
+        // get password from the db. Hold the password in a string, rather than in a User object to avoid hashing it again.
+        String pwFromDb = DaoFactory.getUsersDao().getPasswordByUsername(rawInputUsername);
+        // get a user from the database. Don't use the password from this User object, as it has been hashed twice.
         User userFromDB = DaoFactory.getUsersDao().findByUsername(rawInputUsername);
 
-
-        if (userFromDB == null) {
+        if (pwFromDb == null) {
             /* error msg here: No username entered*/
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/login.jsp");
             request.setAttribute("error", "Invalid Username!");
@@ -35,19 +38,21 @@ public class LoginServlet extends HttpServlet {
             return;
         }
 
-        // validate password matches db
-        boolean validAttempt = BCrypt.checkpw(rawInputPw, userFromDB.getPassword());
+        // checking vars through sout®
+        System.out.println("pwFromDb = " + pwFromDb);
+        System.out.println("rawInputPw = " + rawInputPw);
 
+        // validate password matches db
+        boolean validAttempt =  BCrypt.checkpw(rawInputPw, pwFromDb);
 
         if (validAttempt) {
+            // if valid, login and go to profile page
             request.getSession().setAttribute("user", userFromDB);
             response.sendRedirect("/profile");
         } else {
-
+            // if invalid attempt, go back to login page. Apply session data to implement "sticky forms."
             request.getSession().setAttribute("error", "Invalid password: valid attempt: " + validAttempt);
-
             request.getSession().setAttribute("username", rawInputUsername);
-
             request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
         }
     }
