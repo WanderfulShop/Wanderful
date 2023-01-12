@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: milesraker
@@ -17,10 +18,27 @@
 
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-<div>${noUser}</div>
-<div class="container">
-  <h1>You are viewing, ${user.userName}'s page!</h1>
+<c:choose>
+  <c:when test="${user == null}">
+<div>
+  <h1 class="text-center mt-4">${noUser}</h1>
 </div>
-<h1>${user.userName}</h1>
+  </c:when>
+  <c:otherwise>
+<div class="container">
+  <h1 class="text-center mt-4">You are viewing, ${user.userName}'s page!</h1>
+</div>
+<h1 class="text-center">${user.userName}</h1>
+<h3 class="text-center"> placeholder IMG</h3>
+  </c:otherwise>
+</c:choose>
+<h2 class="text-center mt-4">Here are the featured Ads for the day: </h2>
+<c:forEach var="ad" items="${ad}">
+  <div class="ads justify-content-center">
+    <h2>${ad.adTitle}</h2>
+    <h2>Description: ${ad.adDescription}</h2>
+  </div>
+</c:forEach>
+
 </body>
 </html>
