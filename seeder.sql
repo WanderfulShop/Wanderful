@@ -14,15 +14,8 @@ VALUES ('Wand of Incremental Achievement', 'sweat of bees', 'pine', 'progression
        ('Wand of Epic Job Placement', 'command key from overheated Macbook', 'decomposing cat limb', 'appeasing interviewers', 32, '', 1);
 
 INSERT INTO ads (creation_date, ad_title, ad_description)
-VALUES (2023-01-10, 'Wand of Incremental Achievement', 'This wand is designed to accentuate even the smallest incremental improvements made by your actions. Rejoice in knowing you are making progress, even slow progress counts.'),
-       (2023-01-10, 'Wand of Seaquest Park', 'This wand''s material was sourced from Seaquest park in Castle Rock Washington. It embodies the lumberjack''s whiskey flavored heart. Lumberjack approved.'),
-       (2023-01-11, 'Bring Sanity back!', 'The Staff of the Javanaut is specially designed to bring sanity back to Codeup graduates after being thoroughly swirled by Java III'),
-       (2023-01-12, 'Got Enemies? I can help', 'Wand of the Unworthy was built by a nefarious cat with a penchant for hexes and blank stares.'),
-       (2023-01-13, 'Job Hunters Click Here!', 'This Wand of Epic Job Placement is able to apparate Google and Amazon recruiters to your living room');
-
-INSERT INTO wand_ads
-VALUES (1, 1),
-       (2, 2),
-       (3, 3),
-       (4, 4),
-       (5, 5);
+VALUES (CURDATE(), 'Wand of Incremental Achievement', 'This wand is designed to accentuate even the smallest incremental improvements made by your actions. Rejoice in knowing you are making progress, even slow progress counts.'),
+       (CURDATE(), 'Wand of Seaquest Park', 'This wand''s material was sourced from Seaquest park in Castle Rock Washington. It embodies the lumberjack''s whiskey flavored heart. Lumberjack approved.'),
+       (CURDATE(), 'Bring Sanity back!', 'The Staff of the Javanaut is specially designed to bring sanity back to Codeup graduates after being thoroughly swirled by Java III'),
+       (CURDATE(), 'Got Enemies? I can help', 'Wand of the Unworthy was built by a nefarious cat with a penchant for hexes and blank stares.'),
+       (CURDATE(), 'Job Hunters Click Here!', 'This Wand of Epic Job Placement is able to apparate Google and Amazon recruiters to your living room');
