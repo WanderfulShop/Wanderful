@@ -21,9 +21,9 @@
 </head>
 <body>
 
-<div class="form-inline align-items-center justify-content-end">
+<div class="form-inline align-items-center justify-content-end m-auto ms-3">
   <div>
-    <form role="search" method="post" action="/search/wandsearch">
+    <form role="search" method="post" action="/search/wandsearch" class="ms-4">
       <input type="text" id="myInput" name="wands" class="form-control" placeholder="Search wands">
     </form>
   </div>

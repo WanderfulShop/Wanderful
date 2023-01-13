@@ -10,7 +10,7 @@
 
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
-        <h1>Welcome to the Adlister!</h1>
+        <h1 class="text-center mt-4">This is Wanderful!</h1>
     </div>
     <jsp:include page="WEB-INF/partials/searchBox.jsp"/>
 </body>

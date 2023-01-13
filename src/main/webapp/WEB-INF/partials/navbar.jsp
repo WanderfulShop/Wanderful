@@ -1,6 +1,6 @@
 <%@page import="com.codeup.adlister.models.User"%>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light text-white bg-dark">
 
         <a class="navbar-brand ms-1 m-auto" href="/">Wanderful</a>
 <%--       Redirect this Link below to wands page       --%>
