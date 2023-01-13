@@ -1,8 +1,9 @@
 <%@page import="com.codeup.adlister.models.User"%>
 
+
 <nav class="navbar navbar-expand-lg navbar-light text-white bg-dark">
 
-        <a class="navbar-brand ms-1 m-auto" href="/">Wanderful</a>
+        <a class="navbar-brand ms-1 m-auto text-light" href="/">Wanderful</a>
 <%--       Redirect this Link below to wands page       --%>
         <a class="nav-link m-auto" href="/ads">Wands</a>
 <%--       Allow the user to Login/redirect to user page       --%>

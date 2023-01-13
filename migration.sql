@@ -40,8 +40,7 @@ CREATE TABLE wand_ads (
     FOREIGN KEY (wand_id) REFERENCES wands(id),
     FOREIGN KEY (ad_id) REFERENCES ads(id)
 );
-INSERT INTO users (user_password, user_name, first_name, last_name, school, email)
-VALUES ('password','PotionMaster95','Brittney','Brinson','Hogwarts','magic8@gmail.com');
+
 
 
 

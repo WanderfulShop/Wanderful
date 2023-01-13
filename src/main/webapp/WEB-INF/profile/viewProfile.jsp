@@ -5,26 +5,29 @@
 %>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="/visuals/profile.css">
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Your Profile" />
+        <jsp:param name="title" value= "${user.userName}'s Profile" />
     </jsp:include>
-    <link rel="stylesheet" type="text/css" href="visuals/main.css">
-    <link rel="stylesheet" type="text/css" href="visuals/profile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp"></jsp:include>
-    <h1>Hello, ${user.userName}</h1>
-    <h2>Profile Information</h2>
+<h1 class="fancy-text text-center text-light">Hello, ${user.userName}</h1>
+<div class="border bg-secondary text-center opacity-75  rounded-pill fancy-text">
+    <h2 class="fw-bold">Profile Information</h2>
+    <img arc="/visuals/cat_1.png" alt="black-cat">
     <h3>Full Name: ${user.firstName} ${user.lastName}</h3>
     <p>School: ${user.school}</p>
     <p>Email: ${user.email}</p>
-    <h3>placeholder IMG</h3>
     <form action="/profile/viewProfile" method="post">
         <input type="hidden" name="redirectPath" value="editProfile">
         <input type="submit" value="Edit Profile"/>
     </form>
-
 <%--<jsp:include page="/WEB-INF/partials/AdsOfTheDay.jsp"></jsp:include>--%>
+
 <%--<h2>Featured AD of the day: </h2>
 <c:forEach var="ad" items="${ads}">
     <div>
@@ -49,6 +52,7 @@
         </form>
     </div>
 </c:forEach>
+
 
 </body>
 </html>
