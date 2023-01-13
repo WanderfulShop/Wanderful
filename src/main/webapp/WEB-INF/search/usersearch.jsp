@@ -6,6 +6,7 @@
   Time: 1:21 PM
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -14,6 +15,12 @@
   <jsp:include page="/WEB-INF/partials/head.jsp">
     <jsp:param name="title" value="Your search result" />
   </jsp:include>
+  <style>
+    .text-center {
+      font-family: "Papyrus", "Copperplate", monospace;
+      font-weight: bolder;
+    }
+  </style>
 </head>
 
 <body>
@@ -30,12 +37,14 @@
 </div>
 <h1 class="text-center">${user.userName}</h1>
 <h3 class="text-center"> placeholder IMG</h3>
+    <p class="text-center">School: ${user.school}</p>
+    <p class="text-center">Email: ${user.email}</p>
   </c:otherwise>
 </c:choose>
 <h2 class="text-center mt-4">Here are the featured Ads for the day: </h2>
 <c:forEach var="ad" items="${ad}">
-  <div class="ads justify-content-center">
-    <h2>${ad.adTitle}</h2>
+  <div class="ads text-center">
+    <h2 class="text-bg-secondary">${ad.adTitle}</h2>
     <h2>Description: ${ad.adDescription}</h2>
   </div>
 </c:forEach>

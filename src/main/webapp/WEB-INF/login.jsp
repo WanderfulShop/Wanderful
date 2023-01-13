@@ -37,9 +37,8 @@
             <input type="submit" class="btn btn-primary btn-block" value="Log In">
         </form>
         <div>
-            <form action="register" method="post">
-                <input type="hidden" id="register" name="register" value="register">
-                <input type="submit" class="btn btn-secondary btn-block" value="Register">
+            <form action="register">
+                <input type="submit" class="btn btn-secondary btn-block" value="Register" href="/register">
             </form>
         </div>
     </div>
