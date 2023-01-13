@@ -5,3 +5,7 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
+.fancy-text {
+    font-family: 'Courgette', cursive;
+}
+
