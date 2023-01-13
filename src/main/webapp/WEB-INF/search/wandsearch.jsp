@@ -15,6 +15,14 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Your search result" />
     </jsp:include>
+    <style>
+
+        .container {
+            text-align: center;
+            font-family: "Papyrus", "Copperplate", monospace;
+            font-weight: bolder;
+        }
+    </style>
 </head>
 
 <body>
@@ -26,7 +34,7 @@
     </div>
         </c:when>
         <c:otherwise>
-    <div class="container">
+    <div class="container mt-4">
         <h1>You are viewing, ${wand.wandName}!</h1>
     </div>
 
@@ -48,12 +56,12 @@
     </div>
         </c:otherwise>
     </c:choose>
-    <h2 class="text-center mt-4">Here are the featured Ads for the day: </h2>
-    <c:forEach var="ad" items="${ad}">
-        <div class="ads">
-            <h2>${ad.adTitle}</h2>
-            <h2>Description: ${ad.adDescription}</h2>
-        </div>
-    </c:forEach>
+<%--    <h2 class="text-center mt-4">Here are the featured Ads for the day: </h2>--%>
+<%--    <c:forEach var="ad" items="${ad}">--%>
+<%--        <div class="ads">--%>
+<%--            <h2>${ad.adTitle}</h2>--%>
+<%--            <h2>Description: ${ad.adDescription}</h2>--%>
+<%--        </div>--%>
+<%--    </c:forEach>--%>
 </body>
 </html>

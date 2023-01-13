@@ -2,13 +2,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="visuals/main.css">
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Wanderful INC" />
     </jsp:include>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="visuals/homepage.css">
 </head>
 <body>
 

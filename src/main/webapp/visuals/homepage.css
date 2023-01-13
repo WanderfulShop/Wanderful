@@ -1,0 +1,12 @@
+body {
+    background: url("forest.jpeg") no-repeat center fixed ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.text-center {
+    font-family: "Papyrus", "Copperplate", monospace;
+    font-weight: bolder;
+}

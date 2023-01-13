@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
 import java.io.FileInputStream;
@@ -78,6 +79,22 @@ public class MySQLAdsDao implements Ads {
             return createAdsFromResults(rs);
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving Ads of the Day.", e);
+        }
+    }
+
+    @Override
+    public List<Ad> getUserAds(User user) {
+        String query = "SELECT * FROM ads as A JOIN wand_ads wa on A.id = wa.ad_id " +
+                "JOIN wands w on w.id = wa.wand_id " +
+                "JOIN users u on u.id = w.user_id " +
+                "WHERE w.user_id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setInt(1, user.getId());
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving " + user.getUserName() + "'s ads from database.", e);
         }
     }
 

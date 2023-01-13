@@ -28,11 +28,10 @@ public class ViewProfileServlet extends HttpServlet {
         }
         // With the request I am SETTING the attribute with my desired input (all the ads) and PASSING it to the JSP with the help of the DISPATCHER
         User user = (User) request.getSession().getAttribute("user");
-        System.out.println("user.getUserName() = " + user.getUserName());
         User userFromDb = DaoFactory.getUsersDao().findByUsername(user.getUserName());
-        System.out.println("userFromDb.getUserName() = " + userFromDb.getUserName());
         request.setAttribute("user", userFromDb);
-        request.setAttribute("ads", DaoFactory.getAdsDao().getAdsOfTheDay());
+
+        request.setAttribute("ads", DaoFactory.getAdsDao().getUserAds(userFromDb));
         request.getRequestDispatcher("/WEB-INF/profile/viewProfile.jsp").forward(request, response);
     }
 
