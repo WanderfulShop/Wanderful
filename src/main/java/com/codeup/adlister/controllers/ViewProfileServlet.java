@@ -38,7 +38,7 @@ public class ViewProfileServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("hello from viewProfile doPost");
-        String redirectPath = request.getParameter("adId");
+        String redirectPath = request.getParameter("redirectPath");
         switch (redirectPath){
             case "editProfile" :
                 response.sendRedirect("/profile/editProfile");

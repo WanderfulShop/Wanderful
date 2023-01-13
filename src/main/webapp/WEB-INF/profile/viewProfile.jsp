@@ -52,7 +52,5 @@
         </form>
     </div>
 </c:forEach>
-
-
 </body>
 </html>
