@@ -38,7 +38,7 @@
         </form>
         <div>
             <form action="register" method="post">
-                <input type="hidden" id="register" name="register" value="/register">
+                <input type="hidden" id="register" name="register" value="register">
                 <input type="submit" class="btn btn-secondary btn-block" value="Register">
             </form>
         </div>
