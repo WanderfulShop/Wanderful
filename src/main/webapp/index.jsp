@@ -3,15 +3,18 @@
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Welcome to my site!" />
+        <jsp:param name="title" value="Wanderful INC" />
     </jsp:include>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="visuals/homepage.css">
 </head>
 <body>
 
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
-        <h1 class="text-center mt-4">This is Wanderful!</h1>
+        <h1 class="text-center text-light border bg-secondary opacity-75 rounded-pill fancy-text">Welcome to Wanderful!<br> Where we have rare wands for everyday wizards.✨ </h1>
     </div>
     <jsp:include page="WEB-INF/partials/searchBox.jsp"/>
 </body>
