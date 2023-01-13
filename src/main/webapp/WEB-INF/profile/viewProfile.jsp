@@ -23,17 +23,36 @@
     <p>School: ${user.school}</p>
     <p>Email: ${user.email}</p>
     <form action="/profile/viewProfile" method="post">
-        <input type="hidden" value="true" name="editProfile">
+        <input type="hidden" name="redirectPath" value="editProfile">
         <input type="submit" value="Edit Profile"/>
     </form>
 <%--<jsp:include page="/WEB-INF/partials/AdsOfTheDay.jsp"></jsp:include>--%>
-    <h2 class="fancy-text">Featured AD of the day: </h2>
-    <c:forEach var="ad" items="${ads}">
-        <div class="fancy-text">
-            <h2>${ad.adTitle}</h2>
-            <h2>${ad.adDescription}</h2>
-        </div>
-    </c:forEach>
-</div>
+
+<%--<h2>Featured AD of the day: </h2>
+<c:forEach var="ad" items="${ads}">
+    <div>
+        <h2>${ad.adTitle}</h2>
+        <h2>${ad.adDescription}</h2>
+    </div>
+</c:forEach>--%>
+
+<h2>Your Ads: </h2>
+<c:forEach var="ad" items="${ads}">
+    <div>
+        <p>${ad.adTitle}</p>
+        <form id="edit" name="edit" action="" method="POST">
+            <input type="hidden" name="redirectPath" value="editAd">
+            <input type="hidden" name="adId" value="${ad.id}">
+            <input type="submit" value="Edit">
+        </form>
+        <form id="delete" name="delete" action="" method="POST">
+            <input type="hidden" name="redirectPath" value="deleteAd">
+            <input type="hidden" name="adId" value="${ad.id}">
+            <input type="submit" value="Delete">
+        </form>
+    </div>
+</c:forEach>
+
+
 </body>
 </html>

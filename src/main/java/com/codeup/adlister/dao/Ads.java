@@ -15,4 +15,6 @@ public interface Ads {
     List<Ad> getAdsOfTheDay();
 
     List<Ad> getUserAds(User user);
+
+    Ad getAdById(int adId);
 }

@@ -1,13 +1,10 @@
 package com.codeup.adlister.dao;
 
-import com.codeup.adlister.models.User;
 import com.codeup.adlister.models.Wand;
-
-import java.util.List;
 
 public interface Wands {
     Wand findByWandName(String wandName);
     void insert(Wand wand);
-    Wand findWandByAdId(int adId);
+    Wand getWandByAdId(int adId);
 
 }

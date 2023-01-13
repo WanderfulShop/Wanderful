@@ -98,6 +98,19 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    @Override
+    public Ad getAdById(int adId) {
+        String query = "SELECT * FROM ads WHERE id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setInt(1, adId);
+            ResultSet rs = stmt.executeQuery();
+            return extractAd(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving ad by adId " + adId, e);
+        }
+    }
+
     private Ad extractAd(ResultSet rs) throws SQLException {
         // rs.next();
         return new Ad(
