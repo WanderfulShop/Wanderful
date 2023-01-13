@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.List;
 
 
@@ -20,14 +21,16 @@ import java.util.List;
 public class ViewProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("Hello from ViewProfile doGet");
         if (request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/login");
             return;
         }
         // With the request I am SETTING the attribute with my desired input (all the ads) and PASSING it to the JSP with the help of the DISPATCHER
         User user = (User) request.getSession().getAttribute("user");
+        System.out.println("user.getUserName() = " + user.getUserName());
         User userFromDb = DaoFactory.getUsersDao().findByUsername(user.getUserName());
-        System.out.println("Hello from ViewProfile doGet");
+        System.out.println("userFromDb.getUserName() = " + userFromDb.getUserName());
         request.setAttribute("user", userFromDb);
         request.setAttribute("ads", DaoFactory.getAdsDao().getAdsOfTheDay());
         request.getRequestDispatcher("/WEB-INF/profile/viewProfile.jsp").forward(request, response);
@@ -36,7 +39,6 @@ public class ViewProfileServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("hello from viewProfile doPost");
-        //request.getRequestDispatcher("/profile/editProfile").forward(request, response);
         response.sendRedirect("/profile/editProfile");
     }
 }
