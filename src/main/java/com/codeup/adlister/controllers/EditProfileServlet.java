@@ -1,5 +1,6 @@
 package com.codeup.adlister.controllers;
 
+import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
@@ -21,5 +22,7 @@ public class EditProfileServlet extends HttpServlet {
         // update db
         // redirect to profile - display updated info from db
         User updatedUser = new User(request.getParameter("username"), request.getParameter("firstName"), request.getParameter("lastName"), request.getParameter("school"), request.getParameter("email"));
+        DaoFactory.getUsersDao().updateUser(updatedUser);
+        request.getRequestDispatcher("/profile").forward(request, response);
     }
 }

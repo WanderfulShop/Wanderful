@@ -21,7 +21,7 @@
     <h3>placeholder IMG</h3>
     <form action="/profile/viewProfile" method="post">
         <input type="hidden" value="true" name="editProfile">
-        <input type="submit"/>
+        <input type="submit" value="Edit Profile"/>
     </form>
 
 <%--<jsp:include page="/WEB-INF/partials/AdsOfTheDay.jsp"></jsp:include>--%>

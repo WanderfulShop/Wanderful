@@ -13,4 +13,5 @@ public interface Users {
     String getPasswordByUsername(String rawInputUsername);
 
     User getUserByWandName(String wands);
+    void updateUser(User user);
 }
