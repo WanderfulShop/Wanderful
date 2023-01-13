@@ -20,30 +20,27 @@ import java.util.List;
 public class ViewProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getSession().getAttribute("user") == null && request.getSession().getAttribute("password") == null) {
+        if (request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/login");
             return;
         }
         // With the request I am SETTING the attribute with my desired input (all the ads) and PASSING it to the JSP with the help of the DISPATCHER
         User user = (User) request.getSession().getAttribute("user");
+        System.out.println("user info from ViewProfileServlet doGet");
         System.out.println("user.getSchool() = " + user.getSchool());
         System.out.println("user.getFirstName() = " + user.getFirstName());
         System.out.println("user.getLastName() = " + user.getLastName());
         System.out.println("user.getEmail() = " + user.getEmail());
+        System.out.println("user.getUserName() = " + user.getUserName());
         request.setAttribute("ads", DaoFactory.getAdsDao().getAdsOfTheDay());
         request.getRequestDispatcher("/WEB-INF/profile/viewProfile.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/profile/editProfile.jsp").forward(request, response);
-
-
-        /*        boolean editProfile = Boolean.parseBoolean((String) request.getAttribute("editProfile"));
-        if(editProfile){
-            request.getRequestDispatcher("/WEB-INF/profile/edit.jsp").forward(request, response);
-        }*/
-
+        System.out.println("hello from viewProfile doPost");
+        //request.getRequestDispatcher("/profile/editProfile").forward(request, response);
+        response.sendRedirect("/profile/editProfile");
     }
 }
 

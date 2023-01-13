@@ -13,7 +13,8 @@ import java.io.IOException;
 @WebServlet(name = "controllers.EditProfileServlet", urlPatterns = "/profile/editProfile")
 public class EditProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/profile/editProfile.jsp").forward(request, response);
+        System.out.println("hello from editProfile doGet");
+        request.getRequestDispatcher("/WEB-INF/profile/editProfile.jsp").forward(request, response);
     }
 
     @Override
@@ -23,6 +24,8 @@ public class EditProfileServlet extends HttpServlet {
         // redirect to profile - display updated info from db
         User updatedUser = new User(request.getParameter("username"), request.getParameter("firstName"), request.getParameter("lastName"), request.getParameter("school"), request.getParameter("email"));
         DaoFactory.getUsersDao().updateUser(updatedUser);
-        request.getRequestDispatcher("/profile").forward(request, response);
+        System.out.println("Hello from editprofile doPost");
+        //request.getRequestDispatcher("/profile/viewProfile").forward(request, response);
+        response.sendRedirect("/profile/viewProfile");
     }
 }

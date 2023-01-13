@@ -114,6 +114,7 @@ public class MySQLUsersDao implements Users {
             stmt.setString(2, user.getLastName());
             stmt.setString(3, user.getSchool());
             stmt.setString(4, user.getEmail());
+            stmt.setString(5, user.getUserName());
             stmt.execute();
         }catch(SQLException e){
             throw new RuntimeException("Error updating " + user.getUserName() + "'s profile information", e);

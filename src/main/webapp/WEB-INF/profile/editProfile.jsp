@@ -13,13 +13,14 @@
 <body>
     <form method="post" action="/profile/editProfile">
         <label for="firstName">First Name: </label>
-        <input type="text" name="firstName" id="firstName" value=${user.firstName} >
+        <input type="text" name="firstName" id="firstName" value="${user.firstName}">
         <label for="lastName">Last Name: </label>
-        <input type="text" name="lastName" id="lastName" value=${user.lastName} >
+        <input type="text" name="lastName" id="lastName" value="${user.lastName}" >
         <label for="school">School: </label>
-        <input type="text" name="school" id="school" value=${user.school} >
+        <input type="text" name="school" id="school" value="${user.school}" >
         <label for="email">Email: </label>
-        <input type="text" name="email" id="email" value=${user.email} >
+        <input type="text" name="email" id="email" value="${user.email}" >
+        <input type="hidden" name="userName" id="userName" value="${user.userName}" >
         <input type="submit"/>
     </form>
 </body>
