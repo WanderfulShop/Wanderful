@@ -18,35 +18,35 @@
 <h1 class="fancy-text text-center text-light">Hello, ${user.userName}</h1>
 <div class="border bg-secondary text-center opacity-75  rounded-pill fancy-text">
     <h2 class="fw-bold">Profile Information</h2>
+    <img arc="/visuals/cat_1.png" alt="black-cat">
     <h3>Full Name: ${user.firstName} ${user.lastName}</h3>
     <p>School: ${user.school}</p>
     <p>Email: ${user.email}</p>
-    <h3>placeholder IMG</h3>
     <form action="/profile/viewProfile" method="post">
         <input type="hidden" value="true" name="editProfile">
         <input type="submit" value="Edit Profile"/>
     </form>
-<%--<jsp:include page="/WEB-INF/partials/AdsOfTheDay.jsp"></jsp:include>--%>
-<%--<h2>Featured AD of the day: </h2>
-<c:forEach var="ad" items="${ads}">
-    <div class="fancy-text">
-        <h2>${ad.adTitle}</h2>
-        <h2>${ad.adDescription}</h2>
-    </div>
-</c:forEach>--%>
+<jsp:include page="/WEB-INF/partials/AdsOfTheDay.jsp"></jsp:include>
+<%--<<h2>Featured AD of the day: </h2>--%>
+<%--<c:forEach var="ad" items="${ads}">--%>
+<%--    <div class="fancy-text">--%>
+<%--        <h2>${ad.adTitle}</h2>--%>
+<%--        <h2>${ad.adDescription}</h2>--%>
+<%--    </div>--%>
+<%--</c:forEach>--%>
 
-<h2>Your Ads: </h2>
-<c:forEach var="ad" items="${ads}">
-    <div>
-        <p>${ad.adTitle}</p>
-        <form id="edit" name="edit" action="" method="POST">
-            <input type="submit" value="Edit">
-        </form>
-        <form id="delete" name="delete" action="" method="POST">
-            <input type="submit" value="Delete">
-        </form>
-    </div>
-</c:forEach>
+<%--<h2>Your Ads: </h2>--%>
+<%--<c:forEach var="ad" items="${ads}">--%>
+<%--    <div>--%>
+<%--        <p>${ad.adTitle}</p>--%>
+<%--        <form id="edit" name="edit" action="" method="POST">--%>
+<%--            <input type="submit" value="Edit">--%>
+<%--        </form>--%>
+<%--        <form id="delete" name="delete" action="" method="POST">--%>
+<%--            <input type="submit" value="Delete">--%>
+<%--        </form>--%>
+<%--    </div>--%>
+<%--</c:forEach>--%>
 </div>
 </body>
 </html>
