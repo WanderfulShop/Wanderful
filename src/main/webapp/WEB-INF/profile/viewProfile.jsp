@@ -20,7 +20,7 @@
     <p>Email: ${user.email}</p>
     <h3>placeholder IMG</h3>
     <form action="/profile/viewProfile" method="post">
-        <input type="hidden" value="true" name="editProfile">
+        <input type="hidden" name="redirectPath" value="editProfile">
         <input type="submit" value="Edit Profile"/>
     </form>
 
@@ -38,9 +38,13 @@
     <div>
         <p>${ad.adTitle}</p>
         <form id="edit" name="edit" action="" method="POST">
+            <input type="hidden" name="redirectPath" value="editAd">
+            <input type="hidden" name="adId" value="${ad.id}">
             <input type="submit" value="Edit">
         </form>
         <form id="delete" name="delete" action="" method="POST">
+            <input type="hidden" name="redirectPath" value="deleteAd">
+            <input type="hidden" name="adId" value="${ad.id}">
             <input type="submit" value="Delete">
         </form>
     </div>
