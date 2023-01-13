@@ -22,7 +22,7 @@ public class EditProfileServlet extends HttpServlet {
         // validate inputs
         // update db
         // redirect to profile - display updated info from db
-        User updatedUser = new User(request.getParameter("username"), request.getParameter("firstName"), request.getParameter("lastName"), request.getParameter("school"), request.getParameter("email"));
+        User updatedUser = new User(request.getParameter("userName"), request.getParameter("firstName"), request.getParameter("lastName"), request.getParameter("school"), request.getParameter("email"));
         DaoFactory.getUsersDao().updateUser(updatedUser);
         System.out.println("Hello from editprofile doPost");
         //request.getRequestDispatcher("/profile/viewProfile").forward(request, response);

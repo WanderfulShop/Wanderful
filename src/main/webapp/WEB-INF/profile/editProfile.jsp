@@ -12,6 +12,7 @@
 </head>
 <body>
     <form method="post" action="/profile/editProfile">
+        <p>Edit ${user.userName}'s Profile Information: </p>
         <label for="firstName">First Name: </label>
         <input type="text" name="firstName" id="firstName" value="${user.firstName}">
         <label for="lastName">Last Name: </label>

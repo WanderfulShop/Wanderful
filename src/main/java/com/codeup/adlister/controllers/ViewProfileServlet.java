@@ -26,12 +26,7 @@ public class ViewProfileServlet extends HttpServlet {
         }
         // With the request I am SETTING the attribute with my desired input (all the ads) and PASSING it to the JSP with the help of the DISPATCHER
         User user = (User) request.getSession().getAttribute("user");
-        System.out.println("user info from ViewProfileServlet doGet");
-        System.out.println("user.getSchool() = " + user.getSchool());
-        System.out.println("user.getFirstName() = " + user.getFirstName());
-        System.out.println("user.getLastName() = " + user.getLastName());
-        System.out.println("user.getEmail() = " + user.getEmail());
-        System.out.println("user.getUserName() = " + user.getUserName());
+        System.out.println("Hello from ViewProfile doGet");
         request.setAttribute("ads", DaoFactory.getAdsDao().getAdsOfTheDay());
         request.getRequestDispatcher("/WEB-INF/profile/viewProfile.jsp").forward(request, response);
     }

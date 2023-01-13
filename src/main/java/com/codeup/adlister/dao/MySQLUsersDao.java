@@ -107,6 +107,12 @@ public class MySQLUsersDao implements Users {
 
     @Override
     public void updateUser(User user){
+        System.out.println("hello from usersDao updateuser()");
+        System.out.println("user.getSchool() = " + user.getSchool());
+        System.out.println("user.getFirstName() = " + user.getFirstName());
+        System.out.println("user.getLastName() = " + user.getLastName());
+        System.out.println("user.getEmail() = " + user.getEmail());
+        System.out.println("user.getUserName() = " + user.getUserName());
         String query = "UPDATE users SET first_name = ?, last_name = ?, school = ?, email = ? WHERE user_name = ?";
         try{
             PreparedStatement stmt = connection.prepareStatement(query);
@@ -115,7 +121,7 @@ public class MySQLUsersDao implements Users {
             stmt.setString(3, user.getSchool());
             stmt.setString(4, user.getEmail());
             stmt.setString(5, user.getUserName());
-            stmt.execute();
+            stmt.executeUpdate();
         }catch(SQLException e){
             throw new RuntimeException("Error updating " + user.getUserName() + "'s profile information", e);
         }
