@@ -34,7 +34,7 @@
 <%--                <label for="password">Password</label>--%>
 <%--                <input id="password" name="password" class="form-control" type="password">--%>
 <%--            </div>--%>
-<%--            <input type="submit" class="btn btn-primary btn-block" value="Log In">--%>
+            <input type="submit" class="btn btn-primary btn-block" value="Log In">
         </form>
         <div>
             <form action="register" method="post">
