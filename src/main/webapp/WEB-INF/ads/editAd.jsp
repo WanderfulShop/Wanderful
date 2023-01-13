@@ -11,6 +11,7 @@
     <title>This is where we gunna edit the ads</title>
 </head>
 <body>
-
+    <p>Ad Title: ${ad.adTitle}</p>
+    <p>Wand Name: ${wand.wandName}</p>
 </body>
 </html>

@@ -35,7 +35,7 @@ public class MySQLWandsDao implements Wands{
         }
     }
 
-    public Wand findWandByAdId(int adId){
+    public Wand getWandByAdId(int adId){
         String query = "SELECT * FROM wands as W JOIN wand_ads as WA ON W.id = WA.wand_id JOIN ads as A ON WA.ad_id = A.id WHERE A.id = ? LIMIT 1";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
@@ -46,6 +46,7 @@ public class MySQLWandsDao implements Wands{
         }
 
     }
+
     private Wand extractWand(ResultSet rs) throws SQLException {
         if(! rs.next()){
             return null;
